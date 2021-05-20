@@ -1,2 +1,2 @@
-# UDEMY-Color-Game
+# Color-Guessing-Game
 Color Game
