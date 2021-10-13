@@ -8,6 +8,8 @@ var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
 var easyBtn = document.querySelector("#easyBtn");
 var hardBtn = document.querySelector("#hardBtn");
+var getScore=document.getElementById("score");
+var score=0;
 
 easyBtn.addEventListener("click", function () {
   easyBtn.classList.add("selected");
@@ -39,6 +41,7 @@ hardBtn.addEventListener("click", function () {
 });
 
 resetButton.addEventListener("click", function () {
+   messageDisplay.textContent=""; //once correct color is picked the content shown between is erased
   //generate all new colors
   colors = generateRandomColors(numSquares);
   //pick a new random color from array
@@ -64,11 +67,15 @@ for (var i = 0; i < squares.length; i++) {
     var clickedColor = this.style.background;
     //compare color to pickedColor
     if (clickedColor === pickedColor) {
+      score=score+10;
+      getScore.innerHTML=score;
       messageDisplay.textContent = "Correct!";
       resetButton.textContent = "Play Again?";
       changeColors(clickedColor);
       h1.style.background = clickedColor;
     } else {
+       if(score>0){score=score-5;
+        getScore.innerHTML=score;}
       this.style.background = "#232323";
       messageDisplay.textContent = "Try Again";
     }
